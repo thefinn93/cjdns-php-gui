@@ -11,8 +11,8 @@ A simple GUI for editing cjdroute.conf
 
 4. Restrict access to the directory. One way to do this is to make a `.htaccess` file that looks like this:
 
-`
+```
 Order Deny,Allow
 Deny from all
-Allow from <your IP here>`
+Allow from <your IP here>```
 

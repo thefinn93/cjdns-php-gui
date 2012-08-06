@@ -1,0 +1,19 @@
+.icon-router {
+ background-image: url("icons/router.png");
+ background-position: 0, 0;
+}
+
+.icon-keys {
+ background-image: url("icons/keys.png");
+ background-position: 0, 0;
+}
+
+.icon-share {
+ background-image: url("icons/share.png");
+ width: 19px;
+ background-position: 0, 0;
+}
+
+#sharepasswordjson {
+    width: 500px;
+}

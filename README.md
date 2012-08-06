@@ -14,5 +14,6 @@ A simple GUI for editing cjdroute.conf
 ```
 Order Deny,Allow
 Deny from all
-Allow from <your IP here>```
+Allow from <your IP here>
+```
 

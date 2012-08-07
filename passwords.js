@@ -142,7 +142,7 @@ function generatePassword(field) {
 }
 
 function sharePassword(key) {
-    peeringdetails = "\"" + myv4 + "\":\n{\n\t\"name\":\"" + myname + "\"\n\t\"publicKey\":\"" + mypubkey + "\"\n\t\"password\"" + passwords[key].password + "\"\n\t\"ipv6\"" + myv6 + "\"\n}";
+    peeringdetails = "\"" + myv4 + "\":\n{\n\t\"name\":\"" + myname + "\",\n\t\"publicKey\":\"" + mypubkey + "\",\n\t\"password\":\"" + passwords[key].password + "\",\n\t\"ipv6\":\"" + myv6 + "\"\n}";
     document.getElementById("sharepasswordjson").innerHTML = peeringdetails;
     document.getElementById("shareto").innerHTML = "Password for " + passwords[key]['name'];
     $('#sharepasswordmodal').modal(); 

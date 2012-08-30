@@ -1,6 +1,6 @@
 // AuthorizedPassword related functions:
 
-var AuthorizedPasswords_XHR,token;
+var AuthorizedPasswords_XHR,ezcrypt_XHR,pw,token;
 var pageload = true;
 
 function addpassword() {
@@ -145,8 +145,32 @@ function sharePassword(key) {
     peeringdetails = "\"" + myv4 + "\":\n{\n\t\"name\":\"" + myname + "\",\n\t\"publicKey\":\"" + mypubkey + "\",\n\t\"password\":\"" + passwords[key].password + "\",\n\t\"ipv6\":\"" + myv6 + "\"\n}";
     document.getElementById("sharepasswordjson").innerHTML = peeringdetails;
     document.getElementById("shareto").innerHTML = "Password for " + passwords[key]['name'];
+    document.getElementById("ezcrypturl").style.display = "none";
+    document.getElementById("ezcrypt-btn").style.display = "inline";
+    document.getElementById("ezcrypt-btn").innerHTML = "ezcrypt";
     $('#sharepasswordmodal').modal(); 
 }
 
+function sendtoezcrypt() {
+	ez = this;
+	pw = generateKey();
+	unencrypted = document.getElementById("sharepasswordjson").value;
+	data = encrypt(pw, unencrypted);
+	console.log(unencrypted + "\n\n encrypted with password " + pw + " becomes: \n" + data);
+	ezcrypt_XHR = new XMLHttpRequest();
+	ezcrypt_XHR.onload = ezcryptShowURL;
+	ezcrypt_XHR.open("GET","ezcrypt.php?data=" + encodeURIComponent(data) + "&ttl=300&p=" + encodeURIComponent(pw), true);
+	ezcrypt_XHR.send(null);
+	document.getElementById("ezcrypt-btn").innerHTML = "Loading...";
+}
+
+function ezcryptShowURL() {
+	result = JSON.parse(ezcrypt_XHR.responseText);
+	url = "https://ezcrypt.it/" + result['id'] + "#" + pw;
+	document.getElementById("ezcrypturl").innerHTML = "<a href=\"" + url + "\" target=\"blank\">" + url + "</a>";
+	document.getElementById("ezcrypturl").style.display = "inline";
+	document.getElementById("ezcrypt-btn").style.display = "none";
+}
+ezcrypt();
 passwords = [];
 getPasswords();

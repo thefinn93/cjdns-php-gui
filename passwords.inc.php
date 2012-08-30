@@ -79,6 +79,8 @@
         <textarea id="sharepasswordjson" rows="7"></textarea>
     </div>
     <div class="modal-footer">
+		<code id="ezcrypturl"></code>
+		<a href="#" class="btn" onclick="sendtoezcrypt()" id="ezcrypt-btn">ezcrypt</a>
         <a href="javascript: void(0)" class="btn btn-danger" data-dismiss="modal">Fuck Off</a>
     </div>
 </div>

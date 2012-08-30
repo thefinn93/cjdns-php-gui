@@ -10,6 +10,31 @@ require_once("token.inc.php");
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
+
+<!-- copied from ezcrypt... -->
+<script type="text/javascript">
+	var lib = 'CRYPTO_JS';
+	/*
+	// holder object to store jquery commands until jquery is loaded up
+	window.$ = ( function() {
+		var q = [], f = function( cb ) {
+			q.push( cb );
+		};
+		f.attachReady = function($) { 
+			$( function () {
+				$.each( q, function(i,f) {
+					f.call(document);
+				} );
+				q.length = 0;
+			} );
+			return $;
+		}
+		return f;
+	} )();
+	*/
+</script>
+
+<!-- /ezcrypt -->
 </head>
 <body data-spy="scroll">
 <div class="navbar navbar-fixed-top">
@@ -48,12 +73,21 @@ var myv4 = "<? if(isset($config['ipv4'])) {echo $config['ipv4'];} else {echo "se
 var mypubkey = "<? echo $config['publicKey']; ?>";
 var myname = "<? if(isset($config['myname'])) {echo $config['myname'];} else {echo "set me";} ?>";
 </script>
+<!-- copied from ezcrypt -->
 <script src="bootstrap/js/jquery.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="crypto/LAB.min.js"></script>
+<script type="text/javascript" src="crypto/core.js"></script>
+<script type="text/javascript" charset="utf8" src="crypto/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="crypto/codemirror/codemirror.min.js"></script>
+<script type="text/javascript" src="crypto/codemirror/mode/combined.min.js"></script>
+<script type="text/javascript" src="crypto/crypt.js"></script>
+
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap-tooltip.js" type="text/javascript"></script>
 <script src="passwords.js" type="text/javascript"></script>
 <script src="peers.js" type="text/javascript"></script>
 <script src="misc.js" type="text/javascript"></script>
 <script src="settings.js" type="text/javascript"></script>
+<script src="git.js" type="text/javascript"></script>
 </body>
 </html>

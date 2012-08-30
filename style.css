@@ -17,3 +17,15 @@
 #sharepasswordjson {
     width: 500px;
 }
+
+#cjdns-outdated {
+	display: none;
+}
+
+#self-outdated {
+	display: none;
+}
+
+#ezcrypturl {
+    font-size: 8pt;
+}

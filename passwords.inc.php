@@ -76,7 +76,7 @@
         <i id="shareto">Sharing with wangs</i>
     </div>
     <div class="modal-body">
-        <textarea id="sharepasswordjson" rows="7" onclick="this.select()"></textarea>
+        <textarea id="sharepasswordjson" rows="7"></textarea>
     </div>
     <div class="modal-footer">
         <a href="javascript: void(0)" class="btn btn-danger" data-dismiss="modal">Fuck Off</a>

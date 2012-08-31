@@ -49,8 +49,8 @@ require_once("token.inc.php");
                 <li><a href="javascript:showSettings()">Settings</a></li>
             </ul>
             <ul class="nav pull-right">
-				<li class="btn btn-danger gitcheck" id="cjdns-outdated"></li>
-				<li class="btn btn-danger gitcheck" id="self-outdated"></li>
+				<li class="btn btn-warning gitcheck" id="cjdns-outdated"></li>
+				<li class="btn btn-warning gitcheck" id="self-outdated"></li>
                 <li><a href="javascript:showSettings()"><? if(isset($config['myname'])) {echo $config['myname'];} else {echo $config['ipv6'];} ?></a></li>
             </ul>
         </div>
@@ -81,7 +81,6 @@ var myname = "<? if(isset($config['myname'])) {echo $config['myname'];} else {ec
 <script type="text/javascript" src="crypto/codemirror/codemirror.min.js"></script>
 <script type="text/javascript" src="crypto/codemirror/mode/combined.min.js"></script>
 <script type="text/javascript" src="crypto/crypt.js"></script>
-
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
 <script src="bootstrap/js/bootstrap-tooltip.js" type="text/javascript"></script>
 <script src="passwords.js" type="text/javascript"></script>

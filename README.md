@@ -1,6 +1,8 @@
 A simple GUI for editing cjdroute.conf
 --------
 
+*[Some screenshots](http://imgur.com/a/pE5Jq), so you know what you're getting into*
+
 *Installing:*
 
 1. Drop into an http-accessable directory

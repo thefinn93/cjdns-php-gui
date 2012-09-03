@@ -2,7 +2,7 @@ var Peers_XHR,peers;
 function getUDPPeers() {
     Peers_XHR = new XMLHttpRequest();
     Peers_XHR.onload = showPeers;
-    Peers_XHR.open("POST","action",true);
+    Peers_XHR.open("POST","action.php",true);
     Peers_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     Peers_XHR.send("action=UDPPeer_List&token=" + token);
 }
@@ -108,7 +108,7 @@ function addPeerSave() {
     if(save) {
         Peers_XHR = new XMLHttpRequest();
         Peers_XHR.onload = showPeers;
-        Peers_XHR.open("POST","action",true);
+        Peers_XHR.open("POST","action.php",true);
         Peers_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         Peers_XHR.send("action=UDPPeer_Update&token=" + token + "&name=" + encodeURIComponent(name) + "&ip=" + encodeURIComponent(ip) + "&key=" + encodeURIComponent(key) + "&password=" + encodeURIComponent(password) + "&ipv6=" + encodeURIComponent(cjdnsip));
         $('#addpeermodal').modal('hide');
@@ -121,7 +121,7 @@ function deletepeer(ip) {
     if(confirm("Are you sure you want to delete " + UDPPeers[peer]['name'] + " from your peers?")) {
         Peers_XHR = new XMLHttpRequest();
         Peers_XHR.onload = showPeers;
-        Peers_XHR.open("POST","action",true);
+        Peers_XHR.open("POST","action.php",true);
         Peers_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         Peers_XHR.send("action=UDPPeer_Delete&token=" + token + "&ip=" + encodeURIComponent(ip));
     }

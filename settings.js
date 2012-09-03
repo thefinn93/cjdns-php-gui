@@ -3,7 +3,7 @@ var autofillxhr,settingsxhr;
 function autofillv4() {
     autofillxhr = new XMLHttpRequest;
     autofillxhr.onload = showv4;
-    autofillxhr.open("GET","action?action=autofillv4&token=" + token,true);
+    autofillxhr.open("GET","action.php?action=autofillv4&token=" + token,true);
     autofillxhr.send(null);
 }
 
@@ -20,7 +20,7 @@ function showSettings() {
 function saveSettings() {
     settingsxhr = new XMLHttpRequest;
     settingsxhr.onload = settingsSaved;
-    settingsxhr.open("POST","action",true);
+    settingsxhr.open("POST","action.php",true);
     settingsxhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     settingsxhr.send("action=MyInfo_Update&myname=" + encodeURIComponent(document.getElementById("settingsName").value) + "&ipv4=" + encodeURIComponent(document.getElementById("settingsIpv4").value) + "&token=" + token);
 }

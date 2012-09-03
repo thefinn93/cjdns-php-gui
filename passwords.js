@@ -28,7 +28,7 @@ function addPasswordSave() {
     if(password != "" && name != "") {
         AuthorizedPasswords_XHR = new XMLHttpRequest;
         AuthorizedPasswords_XHR.onload = showPasswords;
-        AuthorizedPasswords_XHR.open("POST","action",true);
+        AuthorizedPasswords_XHR.open("POST","action.php",true);
         AuthorizedPasswords_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         AuthorizedPasswords_XHR.send("action=AuthorizedPasswords_Add&name=" + encodeURIComponent(name) + "&password=" + encodeURIComponent(password) + "&token=" + token)
         $('#addpasswordmodal').modal('hide');
@@ -38,7 +38,7 @@ function addPasswordSave() {
 function getPasswords() {
     AuthorizedPasswords_XHR = new XMLHttpRequest();
     AuthorizedPasswords_XHR.onload = showPasswords;
-    AuthorizedPasswords_XHR.open("GET","action?action=AuthorizedPasswords_List&token=" + token,true);
+    AuthorizedPasswords_XHR.open("GET","action.php?action=AuthorizedPasswords_List&token=" + token,true);
     AuthorizedPasswords_XHR.send(null);
 }
 
@@ -93,7 +93,7 @@ function deletepassword(key) {
     if(confirm("Are you sure you want to delete " + passwords[key]['name'] + "'s password?")) {
         AuthorizedPasswords_XHR = new XMLHttpRequest;
         AuthorizedPasswords_XHR.onload = showPasswords;
-        AuthorizedPasswords_XHR.open("POST","action",true);
+        AuthorizedPasswords_XHR.open("POST","action.php",true);
         AuthorizedPasswords_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         AuthorizedPasswords_XHR.send("action=AuthorizedPasswords_Delete&key=" + key + "&token=" + token)
     } else {
@@ -124,7 +124,7 @@ function editPasswordSave() {
     if(password != "" && name != "") {
         AuthorizedPasswords_XHR = new XMLHttpRequest;
         AuthorizedPasswords_XHR.onload = showPasswords;
-        AuthorizedPasswords_XHR.open("POST","action",true);
+        AuthorizedPasswords_XHR.open("POST","action.php",true);
         AuthorizedPasswords_XHR.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         AuthorizedPasswords_XHR.send("action=AuthorizedPasswords_Edit&key=" + key + "&name=" + encodeURIComponent(name) + "&password=" + encodeURIComponent(password) + "&token=" + token)
         $('#editpasswordmodal').modal('hide');

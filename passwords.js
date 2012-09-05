@@ -159,7 +159,7 @@ function sendtoezcrypt() {
 	console.log(unencrypted + "\n\n encrypted with password " + pw + " becomes: \n" + data);
 	ezcrypt_XHR = new XMLHttpRequest();
 	ezcrypt_XHR.onload = ezcryptShowURL;
-	ezcrypt_XHR.open("GET","ezcrypt.php?data=" + encodeURIComponent(data) + "&ttl=300&p=" + encodeURIComponent(pw), true);
+	ezcrypt_XHR.open("GET","ezcrypt.php?data=" + encodeURIComponent(data) + "&ttl=604800&p=" + encodeURIComponent(pw), true);
 	ezcrypt_XHR.send(null);
 	document.getElementById("ezcrypt-btn").innerHTML = "Loading...";
 }

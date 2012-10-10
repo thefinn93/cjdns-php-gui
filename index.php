@@ -82,7 +82,6 @@ var myname = "<? if(isset($config['myname'])) {echo $config['myname'];} else {ec
 <script type="text/javascript" src="crypto/codemirror/mode/combined.min.js"></script>
 <script type="text/javascript" src="crypto/crypt.js"></script>
 <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-<script src="bootstrap/js/bootstrap-tooltip.js" type="text/javascript"></script>
 <script src="passwords.js" type="text/javascript"></script>
 <script src="peers.js" type="text/javascript"></script>
 <script src="misc.js" type="text/javascript"></script>

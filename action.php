@@ -83,4 +83,4 @@ if(!isset($_REQUEST['token'])) {
     $out['error'] = "bad token";
 }
 $out['token'] = maketoken();
-echo json_encode($out);
+echo json_encode($out, JSON_UNESCAPED_SLASHES);

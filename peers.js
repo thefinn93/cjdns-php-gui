@@ -165,8 +165,9 @@ function editpeer(ip) {
 }
 
 function parseinput(input) {
+	/*
     singleLineComment = RegExp("//.*?\\n","");
-    multiLineComment = RegExp("/\\*.*?\\*/","");
+    multiLineComment = RegExp("/\\*.*?\\/","");
 
     while(singleLineComment.test(input)) {
         input = input.replace(singleLineComment, "");
@@ -177,6 +178,7 @@ function parseinput(input) {
         input = input.replace(multiLineComment, "");
         console.log("Removed a /*");
     }
+    */
 
     try {
         out = JSON.parse(input);

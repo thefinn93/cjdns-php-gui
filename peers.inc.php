@@ -54,7 +54,22 @@
         </div>
     </div>
     <div class="modal-footer">
+		<a href="#" class="btn" onclick="addImportJSON()">Import JSON</a>
         <a href="#" class="btn" data-dismiss="modal">Close</a>
         <a href="#" class="btn btn-success" onclick="addPeerSave()">Add</a>
+    </div>
+</div>
+
+<div class="modal fade hide" id="addpeerJSONmodal">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h3>Import Connection details</h3>
+    </div>
+    <div class="modal-body">
+        <textarea id="addpeerJSON" rows="7"></textarea>
+    </div>
+    <div class="modal-footer">
+		<a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="javascript: void(0)" class="btn btn-success"  onclick="addPeerJSONSave()">Add</a>
     </div>
 </div>

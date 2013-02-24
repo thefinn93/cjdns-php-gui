@@ -35,19 +35,44 @@ if(!isset($_REQUEST['token'])) {
             break;
 
         // Peers
+        
+        case "Peer_List":
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            break;
 
         case "UDPPeer_List":
-            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface']['connectTo'];
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
             break;
 
         case "UDPPeer_Update":
-            $config['interfaces']['UDPInterface']['connectTo'][$_REQUEST['ip']] = array("name"=>$_REQUEST['name'],"publicKey"=>$_REQUEST['key'],"password"=>$_REQUEST['password'],"ipv6"=>$_REQUEST['ipv6']);
-            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface']['connectTo'];
+            $config['interfaces']['UDPInterface'][0]['connectTo'][$_REQUEST['ip']] = array("name"=>$_REQUEST['name'],"publicKey"=>$_REQUEST['key'],"password"=>$_REQUEST['password'],"ipv6"=>$_REQUEST['ipv6']);
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
             break;
 
         case "UDPPeer_Delete":
-            unset($config['interfaces']['UDPInterface']['connectTo'][$_REQUEST['ip']]);
-            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface']['connectTo'];
+            unset($config['interfaces']['ETHInterface'][0]['connectTo'][$_REQUEST['ip']]);
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
+            break;
+        
+        
+        
+        case "ETHPeer_List":
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            break;
+
+        case "ETHPeer_Update":
+            $config['interfaces']['ETHInterface'][0]['connectTo'][$_REQUEST['mac']] = array("name"=>$_REQUEST['name'],"publicKey"=>$_REQUEST['key'],"password"=>$_REQUEST['password'],"ipv6"=>$_REQUEST['ipv6']);
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
+            break;
+
+        case "ETHPeer_Delete":
+            unset($config['interfaces']['ETHInterface'][0]['connectTo'][$_REQUEST['ip']]);
+            $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
+            $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
             break;
 
         // Node Config
@@ -57,7 +82,7 @@ if(!isset($_REQUEST['token'])) {
             break;
 
         case "autofillv4":
-            $bind = explode(":",$config['interfaces']['UDPInterface']['bind']);
+            $bind = explode(":",$config['interfaces']['UDPInterface'][0]['bind']);
             $ip = explode("\n",file_get_contents("http://icanhazip.com"));
             $out['ip'] = $ip[0].":".$bind[1];
             break;

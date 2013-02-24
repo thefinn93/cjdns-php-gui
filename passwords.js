@@ -81,7 +81,7 @@ function showPasswords() {
     }
     token = response['token'];
     if(pageload) {
-        getUDPPeers();
+        getPeers();
         pageload = false;
     }
     updateTooltips();

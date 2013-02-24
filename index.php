@@ -1,4 +1,9 @@
 <?
+if(!is_file(".htaccess")) {
+    echo "No .htaccess file. Try making one like this:";
+    echo "<pre>Order deny,allow\ndeny from all\nallow from 127.0.0.1</pre>";
+    exit();
+}
 session_start();
 require_once("cjdns.inc.php");
 require_once("token.inc.php");
@@ -14,24 +19,6 @@ require_once("token.inc.php");
 <!-- copied from ezcrypt... -->
 <script type="text/javascript">
 	var lib = 'CRYPTO_JS';
-	/*
-	// holder object to store jquery commands until jquery is loaded up
-	window.$ = ( function() {
-		var q = [], f = function( cb ) {
-			q.push( cb );
-		};
-		f.attachReady = function($) { 
-			$( function () {
-				$.each( q, function(i,f) {
-					f.call(document);
-				} );
-				q.length = 0;
-			} );
-			return $;
-		}
-		return f;
-	} )();
-	*/
 </script>
 
 <!-- /ezcrypt -->

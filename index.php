@@ -73,6 +73,6 @@ var myname = "<? if(isset($config['myname'])) {echo $config['myname'];} else {ec
 <script src="peers.js" type="text/javascript"></script>
 <script src="misc.js" type="text/javascript"></script>
 <script src="settings.js" type="text/javascript"></script>
-<!--<script src="git.js" type="text/javascript"></script>-->
+<script src="git.js" type="text/javascript"></script>
 </body>
 </html>

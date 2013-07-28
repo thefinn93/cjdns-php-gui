@@ -14,7 +14,7 @@ if(!($file = file_get_contents($cjdrouteconf))) {
 }
 
 if(!($config = json_decode($file, TRUE))) {
-    die("Failed to parse $cjdrouteconf - did you strip the comments out? PHP's JSON parser doesn't suppor them and fuck if I'm gunna write my own. netlore74 suggests this: <code>cat cjdroute.conf | perl -p0e 's!/\\*.*?\\*/!!sg' | grep -v \"//\"</code>");
+    die("Failed to parse $cjdrouteconf - did you strip the comments out and such? try running it through the cleanconfig binary in the build folder of cjdns.");
 }
 
 function save_config() {

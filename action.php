@@ -1,8 +1,10 @@
 <?
 session_start();
 global $config;
-require_once("cjdns.inc.php");
-require_once("token.inc.php");
+require "cjdns.inc.php";
+require "token.inc.php";
+require "Bencode.php";
+require "Cjdns.php";
 
 
 $out = array('error' => false);
@@ -14,12 +16,13 @@ $out = array('error' => false);
 if(!isset($_REQUEST['token'])) {
     $out['error'] = "no token";
 } elseif(checktoken($_REQUEST['token'])) {
+    $cjdns = new Cjdns($config['admin']['password']);
     switch($_REQUEST['action']) {
-
         // AuthorizedPasswords
         case "AuthorizedPasswords_Add":
             $config['authorizedPasswords'][] = array("password" => $_REQUEST['password'], "name" => $_REQUEST['name']);
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
+            $cjdns->call("AuthorizedPasswords_add", array("password" => $_REQUEST['password']));
             break;
         case "AuthorizedPasswords_Delete":
             unset($config['authorizedPasswords'][intval($_REQUEST['key'])]);
@@ -29,6 +32,7 @@ if(!isset($_REQUEST['token'])) {
         case "AuthorizedPasswords_Edit":
             $config['authorizedPasswords'][intval($_REQUEST['key'])] = array("password" => $_REQUEST['password'], "name" => $_REQUEST['name']);
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
+            $cjdns->call("AuthorizedPasswords_add", array("password" => $_REQUEST['password']));
             break;
         case "AuthorizedPasswords_List":
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
@@ -49,6 +53,7 @@ if(!isset($_REQUEST['token'])) {
             $config['interfaces']['UDPInterface'][0]['connectTo'][$_REQUEST['ip']] = array("name"=>$_REQUEST['name'],"publicKey"=>$_REQUEST['key'],"password"=>$_REQUEST['password'],"ipv6"=>$_REQUEST['ipv6']);
             $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
             $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
+            $cjdns->call("UDPInterface_beginConnection", array("pubkey" => $_REQUEST['key'], "address" => $_REQUEST['ip'], "password" => $_REQUEST['password']));
             break;
 
         case "UDPPeer_Delete":
@@ -67,6 +72,7 @@ if(!isset($_REQUEST['token'])) {
             $config['interfaces']['ETHInterface'][0]['connectTo'][$_REQUEST['mac']] = array("name"=>$_REQUEST['name'],"publicKey"=>$_REQUEST['key'],"password"=>$_REQUEST['password'],"ipv6"=>$_REQUEST['ipv6']);
             $out['ETHPeer_List'] = $config['interfaces']['ETHInterface'][0]['connectTo'];
             $out['UDPPeer_List'] = $config['interfaces']['UDPInterface'][0]['connectTo'];
+            $cjdns->call("ETHInterface_beginConnection", array("pubkey" => $_REQUEST['key'], "macAddress" => $_REQUEST['mac'], "password" => $_REQUEST['password']));
             break;
 
         case "ETHPeer_Delete":

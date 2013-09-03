@@ -20,7 +20,7 @@ if(!isset($_REQUEST['token'])) {
     switch($_REQUEST['action']) {
         // AuthorizedPasswords
         case "AuthorizedPasswords_Add":
-            $config['authorizedPasswords'][] = array("password" => $_REQUEST['password'], "name" => $_REQUEST['name']);
+            $config['authorizedPasswords'][] = array("password" => $_REQUEST['password'], "user" => $_REQUEST['name']);
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
             $cjdns->call("AuthorizedPasswords_add", array("password" => $_REQUEST['password']));
             break;
@@ -30,12 +30,18 @@ if(!isset($_REQUEST['token'])) {
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
             break;
         case "AuthorizedPasswords_Edit":
-            $config['authorizedPasswords'][intval($_REQUEST['key'])] = array("password" => $_REQUEST['password'], "name" => $_REQUEST['name']);
+            $config['authorizedPasswords'][intval($_REQUEST['key'])] = array("password" => $_REQUEST['password'], "user" => $_REQUEST['name']);
             $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
             $cjdns->call("AuthorizedPasswords_add", array("password" => $_REQUEST['password']));
             break;
         case "AuthorizedPasswords_List":
-            $out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
+            foreach($config['authorizedPasswords'] as $key=>$pass) {
+				if(isset($config['authorizedPasswords'][$key]['name'])) {
+					$config['authorizedPasswords'][$key]['user'] = $config['authorizedPasswords'][$key]['name'];
+					unset($config['authorizedPasswords'][$key]['name']);
+				}
+			}
+			$out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
             break;
 
         // Peers
@@ -101,11 +107,6 @@ if(!isset($_REQUEST['token'])) {
         case "GetConfig_pubkey":
             $out['pubkey'] = $config['pubkey'];
             break;
-/* For testing purposes only, shouldn't be enabled
-        case "GetConfig":
-            $out['config'] = $config;
-            break;
-*/
     }
     if(!save_config()) {
         $out['error'] = "unable to save config";

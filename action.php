@@ -40,6 +40,10 @@ if(!isset($_REQUEST['token'])) {
 					$config['authorizedPasswords'][$key]['user'] = $config['authorizedPasswords'][$key]['name'];
 					unset($config['authorizedPasswords'][$key]['name']);
 				}
+                if(isset($config['authorizedPasswords'][$key]['person'])) {
+					$config['authorizedPasswords'][$key]['user'] = $config['authorizedPasswords'][$key]['person'];
+					unset($config['authorizedPasswords'][$key]['person']);
+				}
 			}
 			$out['AuthorizedPassword_List'] = $config['authorizedPasswords'];
             break;

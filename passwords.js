@@ -64,8 +64,8 @@ function showPasswords() {
             if(response.AuthorizedPassword_List[i]['person'] != undefined) {
                 name = response.AuthorizedPassword_List[i]['person']
             }
-            if(response.AuthorizedPassword_List[i]['name'] != undefined) {
-                name = response.AuthorizedPassword_List[i]['name'];
+            if(response.AuthorizedPassword_List[i]['user'] != undefined) {
+                name = response.AuthorizedPassword_List[i]['user'];
             }
             pass = response.AuthorizedPassword_List[i]['password'];
             out += "<tr id=\"password" + i + "\">";
@@ -90,7 +90,7 @@ function showPasswords() {
 function deletepassword(key) {
     $("#password" + key + "delete").tooltip("hide");
     document.getElementById("password" + key + "delete").innerHTML = "Confirm";
-    if(confirm("Are you sure you want to delete " + passwords[key]['name'] + "'s password?")) {
+    if(confirm("Are you sure you want to delete " + passwords[key]['user'] + "'s password?")) {
         AuthorizedPasswords_XHR = new XMLHttpRequest;
         AuthorizedPasswords_XHR.onload = showPasswords;
         AuthorizedPasswords_XHR.open("POST","action.php",true);
@@ -102,7 +102,7 @@ function deletepassword(key) {
 }
 
 function editpassword(key) {
-    document.getElementById("editPasswordName").value = passwords[key]['name'];
+    document.getElementById("editPasswordName").value = passwords[key]['user'];
     document.getElementById("editPasswordPassword").value = passwords[key].password;
     document.getElementById("editPasswordKey").value = key;
     $('#editpasswordmodal').modal();

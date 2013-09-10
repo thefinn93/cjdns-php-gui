@@ -142,9 +142,9 @@ function generatePassword(field) {
 }
 
 function sharePassword(key) {
-    peeringdetails = "\"" + myv4 + "\":\n                {\n                    \"name\":\"" + myname + "\",\n                    \"publicKey\":\"" + mypubkey + "\",\n                    // This password has been assigned to " +  passwords[key]['name'] + ".\n                    \"password\":\"" + passwords[key].password + "\",\n                    \"ipv6\":\"" + myv6 + "\"\n                }";
+    peeringdetails = "\"" + myv4 + "\":\n                {\n                    \"name\":\"" + myname + "\",\n                    \"publicKey\":\"" + mypubkey + "\",\n                    // This password has been assigned to " +  passwords[key]['user'] + ".\n                    \"password\":\"" + passwords[key].password + "\",\n                    \"ipv6\":\"" + myv6 + "\"\n                }";
     document.getElementById("sharepasswordjson").innerHTML = peeringdetails;
-    document.getElementById("shareto").innerHTML = "Password for " + passwords[key]['name'];
+    document.getElementById("shareto").innerHTML = "Password for " + passwords[key]['user'];
     document.getElementById("ezcrypturl").style.display = "none";
     document.getElementById("ezcrypt-btn").style.display = "inline";
     document.getElementById("ezcrypt-btn").innerHTML = "ezcrypt";
